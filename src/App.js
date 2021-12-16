@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import LoginCard from "./LoginCard";
+import RegisterCard from "./RegisterCard";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    mode: "login",
+    loginEmail: "",
+    loginPass: "",
+    RegisterEmail: "",
+    RegisterNick: "",
+    RegisterPass: "",
+    RegisterConfPass: "",
+  };
+
+  handleChangeMode = () => {
+    if (this.state.mode === "login") {
+      this.setState({
+        mode: "register",
+      });
+    } else if (this.state.mode === "register") {
+      this.setState({
+        mode: "login",
+      });
+    }
+  };
+  render() {
+    const { mode } = this.state;
+    return (
+      <div className="app">
+        <div className="CardContainer">
+          {mode === "login" ? (
+            <LoginCard handleMode={this.handleChangeMode} />
+          ) : (
+            <RegisterCard handleMode={this.handleChangeMode} />
+          )}
+        </div>
+        <div className="background">
+          <div className="dark"></div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
