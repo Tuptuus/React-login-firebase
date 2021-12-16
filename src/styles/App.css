@@ -22,13 +22,13 @@
 .background {
   transform: scale(1.1);
   filter: blur(6px);
-  background-image: url(../images/background.jpg);
+  background-image: url(../../images/background.jpg);
   height: 100vh;
   width: 100%;
   background-size: cover;
 }
 
-.CardContainer {
+.CardsContainer {
   width: 55%;
   height: 80%;
   position: absolute;
