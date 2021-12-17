@@ -48,8 +48,8 @@
 
 .Login__registerContainer {
   display: flex;
-  /* background-color: red; */
-  margin-top: 25%;
+  position: absolute;
+  margin-top: 66.5%;
   margin-left: 74%;
 }
 
@@ -58,4 +58,9 @@
   cursor: pointer;
   text-decoration: underline;
   color: blue;
+}
+
+.Login__error {
+  color: red;
+  font-size: 18px;
 }

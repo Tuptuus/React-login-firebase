@@ -26,6 +26,7 @@ const LoginCard = (props) => {
         />
         <label htmlFor="floatingPasswordCustom">Password</label>
       </Form.Floating>
+      <p className="Login__error">{props.errorMessage}</p>
       <button onClick={props.handleLoginUser} className="Login__loginBtn">
         Zaloguj
       </button>

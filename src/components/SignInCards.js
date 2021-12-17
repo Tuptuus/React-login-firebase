@@ -7,6 +7,7 @@ const SignInCards = (props) => {
     <>
       {props.mode === "login" ? (
         <LoginCard
+          errorMessage={props.errorMessage}
           handleLoginUser={props.handleLoginUser}
           handleLoginEmail={props.handleLoginEmail}
           handleLoginPass={props.handleLoginPass}
