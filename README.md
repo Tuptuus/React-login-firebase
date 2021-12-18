@@ -20,6 +20,6 @@ projectId: "xxxxxxxxxxxxxxxxxxxxxxxx", <br/>
 storageBucket: "xxxxxxxxxxxxxxxxxxxxxxxx", <br/>
 messagingSenderId: "xxxxxxxxxxxxxxxxxxxxxxxx", <br/>
 appId: "xxxxxxxxxxxxxxxxxxxxxxxx", <br/>
-}; <br/>
+}; <br/> <br/>
 const app = initializeApp(firebaseConfig); <br/>
 export const auth = getAuth(app); <br/>
