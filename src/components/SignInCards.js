@@ -7,6 +7,7 @@ const SignInCards = (props) => {
     <>
       {props.mode === "login" ? (
         <LoginCard
+          loginEnterPress={props.loginEnterPress}
           isLoading={props.isLoading}
           errorMessage={props.errorMessage}
           handleLoginUser={props.handleLoginUser}
@@ -16,6 +17,7 @@ const SignInCards = (props) => {
         />
       ) : (
         <RegisterCard
+          registerEnterPress={props.registerEnterPress}
           isLoading={props.isLoading}
           errorMessage={props.errorMessage}
           handleRegisterUser={props.register}

@@ -42,11 +42,7 @@ const App = () => {
     if (registerEmail !== "" && registerPass !== "" && registerNick !== "") {
       try {
         setLoading(true);
-        const user = await createUserWithEmailAndPassword(
-          auth,
-          registerEmail,
-          registerPass
-        );
+        await createUserWithEmailAndPassword(auth, registerEmail, registerPass);
         updateProfile(auth.currentUser, {
           displayName: registerNick,
         }).then(() => {});
@@ -74,11 +70,7 @@ const App = () => {
     if (loginEmail !== "" && loginPass !== "") {
       try {
         setLoading(true);
-        const user = await signInWithEmailAndPassword(
-          auth,
-          loginEmail,
-          loginPass
-        );
+        await signInWithEmailAndPassword(auth, loginEmail, loginPass);
         setError("");
         setIsLogin(true);
       } catch (error) {
@@ -127,6 +119,16 @@ const App = () => {
     setLoginPass(e.target.value);
   };
 
+  const loginEnterPress = (e) => {
+    if (e.key === "Enter") {
+      login();
+    }
+  };
+  const registerEnterPress = (e) => {
+    if (e.key === "Enter") {
+      register();
+    }
+  };
   return (
     <div className="app">
       <div className="CardsContainer">
@@ -134,6 +136,8 @@ const App = () => {
           <UserCard nick={registerNick} handleLogout={logout} />
         ) : (
           <SignInCards
+            loginEnterPress={loginEnterPress}
+            registerEnterPress={registerEnterPress}
             isLoading={loading}
             errorMessage={error}
             handleLoginUser={login}

@@ -8,6 +8,7 @@ const LoginCard = (props) => {
       <p className="Login__Title">Zaloguj Się</p>
       <Form.Floating className="Login__Email">
         <Form.Control
+          onKeyPress={props.loginEnterPress}
           onChange={props.handleLoginEmail}
           className="Login__EmailBorder"
           id="floatingInputCustom"
@@ -18,6 +19,7 @@ const LoginCard = (props) => {
       </Form.Floating>
       <Form.Floating className="Login__Pass">
         <Form.Control
+          onKeyPress={props.loginEnterPress}
           onChange={props.handleLoginPass}
           className="Login__PassBorder"
           id="floatingPasswordCustom"

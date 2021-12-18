@@ -8,6 +8,7 @@ const RegisterCard = (props) => {
       <p className="Register__Title">Zarejestruj Się</p>
       <Form.Floating className="Register__Email">
         <Form.Control
+          onKeyPress={props.registerEnterPress}
           onChange={props.handleRegisterEmail}
           className="Register__EmailBorder"
           id="floatingEmailCustom"
@@ -18,6 +19,7 @@ const RegisterCard = (props) => {
       </Form.Floating>
       <Form.Floating className="Register__Email">
         <Form.Control
+          onKeyPress={props.registerEnterPress}
           onChange={props.handleRegisterNick}
           className="Register__EmailBorder"
           id="floatingNickCustom"
@@ -28,6 +30,7 @@ const RegisterCard = (props) => {
       </Form.Floating>
       <Form.Floating className="Register__Pass">
         <Form.Control
+          onKeyPress={props.registerEnterPress}
           onChange={props.handleRegisterPass}
           className="Register__PassBorder"
           id="floatingPasswordCustom"
