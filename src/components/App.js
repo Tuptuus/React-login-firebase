@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/App.css";
-import { auth } from "./firebase";
+import { auth } from "./firebase-config";
 import {
   createUserWithEmailAndPassword,
   updateProfile,

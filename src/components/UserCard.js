@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/userCard.css";
-import { auth } from "./firebase";
+import { auth } from "./firebase-config";
 
 const UserCard = (props) => {
   console.log(auth.currentUser.displayName);
