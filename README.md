@@ -11,15 +11,15 @@
 #### code in firebase-config.js is below
 
 import { initializeApp } from "firebase/app"; <br/>
-import { getAuth } from "firebase/auth";
+import { getAuth } from "firebase/auth"; <br/>
 
-const firebaseConfig = {
-apiKey: "xxxxxxxxxxxxxxxxxxxxxxxx",
-authDomain: "xxxxxxxxxxxxxxxxxxxxxxxx",
-projectId: "xxxxxxxxxxxxxxxxxxxxxxxx",
-storageBucket: "xxxxxxxxxxxxxxxxxxxxxxxx",
-messagingSenderId: "xxxxxxxxxxxxxxxxxxxxxxxx",
-appId: "xxxxxxxxxxxxxxxxxxxxxxxx",
-};
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+const firebaseConfig = { <br/>
+apiKey: "xxxxxxxxxxxxxxxxxxxxxxxx", <br/>
+authDomain: "xxxxxxxxxxxxxxxxxxxxxxxx", <br/>
+projectId: "xxxxxxxxxxxxxxxxxxxxxxxx", <br/>
+storageBucket: "xxxxxxxxxxxxxxxxxxxxxxxx", <br/>
+messagingSenderId: "xxxxxxxxxxxxxxxxxxxxxxxx", <br/>
+appId: "xxxxxxxxxxxxxxxxxxxxxxxx", <br/>
+}; <br/>
+const app = initializeApp(firebaseConfig); <br/>
+export const auth = getAuth(app); <br/>
