@@ -6,9 +6,7 @@
 .pnp.js
 
 # config firebase
-src/
-components/
-firebase.js
+src/components/firebase.js
 
 # testing
 /coverage
