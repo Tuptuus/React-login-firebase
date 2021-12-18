@@ -10,7 +10,7 @@
 
 #### code in firebase-config.js is below
 
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app"; <br/>
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
