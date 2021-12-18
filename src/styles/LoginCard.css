@@ -64,3 +64,7 @@
   color: red;
   font-size: 18px;
 }
+
+.Login__loadingAnimation {
+  margin-left: 10px;
+}

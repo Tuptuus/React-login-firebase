@@ -27,7 +27,7 @@
 }
 
 .Register__registerBtn {
-  width: 25%;
+  width: 32%;
   height: 8%;
   margin-top: 5%;
   font-size: 35px;
@@ -47,8 +47,9 @@
 }
 
 .Register__loginContainer {
+  position: absolute;
   display: flex;
-  margin-top: 20.5%;
+  margin-top: 66.5%;
   margin-left: 74%;
 }
 
@@ -57,4 +58,13 @@
   cursor: pointer;
   text-decoration: underline;
   color: blue;
+}
+
+.Register__error {
+  color: red;
+  font-size: 18px;
+}
+
+.Register__loadingAnimation {
+  margin-left: 10px;
 }

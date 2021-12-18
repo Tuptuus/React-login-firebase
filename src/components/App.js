@@ -20,59 +20,95 @@ const App = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPass, setLoginPass] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChangeMode = () => {
     if (mode === "login") {
       setMode("register");
       setLoginEmail("");
       setLoginPass("");
+      setError("");
     } else if (mode === "register") {
       setMode("login");
       setRegisterEmail("");
       setRegisterPass("");
       setRegisterNick("");
+      setError("");
     }
   };
 
   const register = async () => {
-    try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPass
-      );
-      updateProfile(auth.currentUser, {
-        displayName: registerNick,
-      }).then(() => {});
-      setIsLogin(true);
-      setMode("login");
-    } catch (error) {
-      console.log(error.message);
+    setError("");
+    if (registerEmail !== "" && registerPass !== "" && registerNick !== "") {
+      try {
+        setLoading(true);
+        const user = await createUserWithEmailAndPassword(
+          auth,
+          registerEmail,
+          registerPass
+        );
+        updateProfile(auth.currentUser, {
+          displayName: registerNick,
+        }).then(() => {});
+        setIsLogin(true);
+        setMode("login");
+      } catch (error) {
+        console.log(error.code);
+        if (error.code === "auth/invalid-email") {
+          setError("Nieprawidłowy adres email");
+          setLoading(false);
+        } else if (error.code === "auth/email-already-in-use") {
+          setError("Ten adres email jest już w użyciu");
+          setLoading(false);
+        } else if (error.code === "auth/weak-password") {
+          setError("Zbyt słabe hasło");
+          setLoading(false);
+        }
+      }
+    } else {
+      setError("Uzupełnij dane do rejestracji");
     }
   };
   const login = async () => {
-    try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPass
-      );
-      setError("");
-      setIsLogin(true);
-    } catch (error) {
-      console.log(error.code);
-      if (error.code === "auth/wrong-password") {
-        setError("Błędne Hasło");
-      } else if (error.code === "auth/user-not-found") {
-        setError("Nie znaleziono użytkownika");
-      } else if (error.code === "auth/too-many-requests") {
-        setError("Spróbuj ponownie później");
+    setError("");
+    if (loginEmail !== "" && loginPass !== "") {
+      try {
+        setLoading(true);
+        const user = await signInWithEmailAndPassword(
+          auth,
+          loginEmail,
+          loginPass
+        );
+        setError("");
+        setIsLogin(true);
+      } catch (error) {
+        if (error.code === "auth/wrong-password") {
+          setError("Błędne Hasło");
+          setLoading(false);
+        } else if (error.code === "auth/user-not-found") {
+          setError("Nie znaleziono użytkownika");
+          setLoading(false);
+        } else if (error.code === "auth/too-many-requests") {
+          setError("Spróbuj ponownie później");
+          setLoading(false);
+        } else if (error.code === "auth/invalid-email") {
+          setError("Nieprawidłowy adres email");
+          setLoading(false);
+        }
       }
+    } else {
+      setError("Uzupełnij login i hasło");
     }
   };
   const logout = async () => {
     await signOut(auth);
     setIsLogin(false);
+    setLoginEmail("");
+    setLoginPass("");
+    setRegisterEmail("");
+    setRegisterPass("");
+    setRegisterNick("");
+    setLoading(false);
   };
 
   const handleRegisterEmail = (e) => {
@@ -98,6 +134,7 @@ const App = () => {
           <UserCard nick={registerNick} handleLogout={logout} />
         ) : (
           <SignInCards
+            isLoading={loading}
             errorMessage={error}
             handleLoginUser={login}
             handleLoginEmail={handleLoginEmail}

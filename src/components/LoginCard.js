@@ -1,5 +1,5 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+import { Form, Spinner } from "react-bootstrap";
 import "../styles/LoginCard.css";
 
 const LoginCard = (props) => {
@@ -29,6 +29,15 @@ const LoginCard = (props) => {
       <p className="Login__error">{props.errorMessage}</p>
       <button onClick={props.handleLoginUser} className="Login__loginBtn">
         Zaloguj
+        {props.isLoading ? (
+          <Spinner
+            className="Login__loadingAnimation"
+            animation="border"
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        ) : null}
       </button>
       <div className="Login__registerContainer">
         <p>Nie masz konta?</p>

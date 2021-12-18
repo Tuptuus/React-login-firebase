@@ -1,5 +1,5 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+import { Form, Spinner } from "react-bootstrap";
 import "../styles/RegisterCard.css";
 
 const RegisterCard = (props) => {
@@ -36,20 +36,21 @@ const RegisterCard = (props) => {
         />
         <label htmlFor="floatingPasswordCustom">Password</label>
       </Form.Floating>
-      {/* <Form.Floating className="Register__Pass">
-        <Form.Control
-          className="Register__PassBorder"
-          id="floatingPasswordCustom"
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <label htmlFor="floatingPasswordCustom">Confirm Password</label>
-      </Form.Floating> */}
+      <p className="Register__error">{props.errorMessage}</p>
       <button
         onClick={props.handleRegisterUser}
         className="Register__registerBtn"
       >
         Zarejestruj Się
+        {props.isLoading ? (
+          <Spinner
+            className="Register__loadingAnimation"
+            animation="border"
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        ) : null}
       </button>
       <div className="Register__loginContainer">
         <p>Masz już konto?</p>

@@ -7,6 +7,7 @@ const SignInCards = (props) => {
     <>
       {props.mode === "login" ? (
         <LoginCard
+          isLoading={props.isLoading}
           errorMessage={props.errorMessage}
           handleLoginUser={props.handleLoginUser}
           handleLoginEmail={props.handleLoginEmail}
@@ -15,6 +16,8 @@ const SignInCards = (props) => {
         />
       ) : (
         <RegisterCard
+          isLoading={props.isLoading}
+          errorMessage={props.errorMessage}
           handleRegisterUser={props.register}
           handleRegisterNick={props.handleRegisterNick}
           handleRegisterEmail={props.handleRegisterEmail}
